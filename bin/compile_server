@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+set -e
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+pushd . > /dev/null
+mkdir -p $CACHE_DIR
+cd $CACHE_DIR
+
+rm -rf mongoose
+git clone https://github.com/jianhuiz/mongoose.git
+cd mongoose/examples
+make server
+
+cp server $BUILD_DIR
+
+popd > /dev/null
+rm -rf mongoose
+

@@ -21,4 +21,10 @@ else
 fi
 
 make
+echo "-----> Compile app done"
+
+# make and pack web server
+$LP_DIR/bin/compile_server $*
+echo "-----> Compile web server done"
+
 echo "-----> Compilation done"
